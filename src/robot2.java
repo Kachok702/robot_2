@@ -80,11 +80,11 @@ public class robot2 {
     public static void moveRobot(Robot robot, int toX, int toY) {
         // your code
                 if (toX > robot.getX()) {
-                    while (robot.dir != Direction.RIGHT) {
+                    while (robot.getDirection() != Direction.RIGHT) {
                         robot.turnRight();
                     }
                     } else if (toX < robot.getX()) {
-                    while (robot.dir != Direction.LEFT) {
+                    while (robot.getDirection() != Direction.LEFT) {
                         robot.turnLeft();
                     }
                    }
@@ -93,18 +93,18 @@ public class robot2 {
                     }
 
                 if (toY > robot.getY()) {
-            while (robot.dir != Direction.UP) {
+            while (robot.getDirection() != Direction.UP) {
                 robot.turnRight();
             }
                     } else if (toY < robot.getY()) {
-            while (robot.dir != Direction.DOWN) {
+            while (robot.getDirection() != Direction.DOWN) {
                 robot.turnLeft();
             }
                     }
         while (robot.getY() != toY) {
             robot.stepForward();
                     }
-                        System.out.println(robot.dir);
+                        System.out.println(robot.getDirection());
               System.out.print("х: " + robot.getX() + " у: " + robot.getY());
     }
 }
