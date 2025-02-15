@@ -3,8 +3,8 @@ import java.util.Arrays;
 
 public class robot2 {
     public static void main(String[] args) {
-        Robot robot = new Robot(2, -6, Direction.RIGHT);
-        moveRobot(robot, -3, 12);
+        Robot robot = new Robot(5, 8, Direction.DOWN);
+        moveRobot(robot, 8, 6);
     }
 
     public enum Direction {
@@ -79,100 +79,32 @@ public class robot2 {
 
     public static void moveRobot(Robot robot, int toX, int toY) {
         // your code
-        int x = robot.getX();
-        int y = robot.getY();
-        var dir = robot.dir;
-        if (toX > x) {
-            switch (dir) {
-                case UP:
-                    robot.turnRight();
-                    dir = robot.dir;
-                    break;
-                case DOWN:
-                    robot.turnLeft();
-                    dir = robot.dir;
-                    break;
-                case RIGHT:
-                    break;
-                case LEFT:
-                    robot.turnLeft();
-                    robot.turnLeft();
-                    dir = robot.dir;
-                    break;
+                if (toX > robot.getX()) {
+                    while (robot.dir != Direction.RIGHT) {
+                        robot.turnRight();
+                    }
+                    } else if (toX < robot.getX()) {
+                    while (robot.dir != Direction.LEFT) {
+                        robot.turnLeft();
+                    }
+                   }
+        while (robot.getX() != toX) {
+            robot.stepForward();
+                    }
+
+                if (toY > robot.getY()) {
+            while (robot.dir != Direction.UP) {
+                robot.turnRight();
             }
-            while (x != toX) {
-                robot.stepForward();
-                x = robot.getX();
+                    } else if (toY < robot.getY()) {
+            while (robot.dir != Direction.DOWN) {
+                robot.turnLeft();
             }
-        } else if (toX < x) {
-            switch (dir) {
-                case UP:
-                    robot.turnLeft();
-                    dir = robot.dir;
-                    break;
-                case DOWN:
-                    robot.turnRight();
-                    dir = robot.dir;
-                    break;
-                case RIGHT:
-                    robot.turnLeft();
-                    robot.turnLeft();
-                    dir = robot.dir;
-                    break;
-                case LEFT:
-                    break;
-            }
-            while (x != toX) {
-                robot.stepForward();
-                x = robot.getX();
-            }
-        }
-        if (toY > y) {
-            switch (dir) {
-                case UP:
-                    break;
-                case DOWN:
-                    robot.turnRight();
-                    robot.turnRight();
-                    dir = robot.dir;
-                    break;
-                case RIGHT:
-                    robot.turnLeft();
-                    dir = robot.dir;
-                    break;
-                case LEFT:
-                    robot.turnRight();
-                    dir = robot.dir;
-                    break;
-            }
-            while (y != toY) {
-                robot.stepForward();
-                y = robot.getY();
-            }
-        } else if (toY < y) {
-            switch (dir) {
-                case UP:
-                    robot.turnLeft();
-                    robot.turnLeft();
-                    dir = robot.dir;
-                    break;
-                case DOWN:
-                    break;
-                case RIGHT:
-                    robot.turnRight();
-                    dir = robot.dir;
-                    break;
-                case LEFT:
-                    robot.turnLeft();
-                    dir = robot.dir;
-                    break;
-            }
-            while (y != toY) {
-                robot.stepForward();
-                y = robot.getY();
-            }
-        }
-        System.out.println((x == toX) & (y == toY));
-        System.out.print("х: " + x + " у: " + y);
+                    }
+        while (robot.getY() != toY) {
+            robot.stepForward();
+                    }
+                        System.out.println(robot.dir);
+              System.out.print("х: " + robot.getX() + " у: " + robot.getY());
     }
 }
