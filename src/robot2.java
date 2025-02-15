@@ -105,6 +105,6 @@ public class robot2 {
             robot.stepForward();
                     }
                         System.out.println(robot.getDirection());
-              System.out.print("х: " + robot.getX() + " у: " + robot.getY());
+              System.out.print("х: " + robot.getX() + " у: " + robot.getY() + toX);
     }
 }
